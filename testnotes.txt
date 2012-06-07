@@ -1,0 +1,1185 @@
+From Lynda
+
+Chapter 1
+
+Ruby is object oriented
+Two guiding principle
+DRY Code
+Don’t repeat yourself
+Convention of Configuration
+A set of senbsible defaults. We specify the unconventional aspects
+Follows the best practices
+You will get extra features for free.
+
+People who have some previous web sexperience will get the most out of ror
+Good for practices and security. You cannot be afraid of the command line
+
+What are the prerequisites?
+Know how browsers and web servers work and pages. 
+Understand HTML. Ror outputs in html
+Should have a good understanding in SQ:. Maybe even just some basic SQL and the concepts. Know how to join two tables together using a foreign key. 
+Recommends you know some CSS and javascript.
+Says you should learn Ruby. Don’t need to do it right away. It’s like moving ot a country with out moving to another country.
+
+
+Chap1-3
+Understanding MVC architecture
+Model
+View
+Controller
+
+Model is our objects. It encapsulates the data in our DB
+View is the presentation layer. Pages people see and interact with.
+Controller process and respond to events like user action and invoke changes to the model and the view based on that and control what happens.
+
+Browser > controller > model > DB
+Sends it back to view and then to the bnrowser
+Vs traditional browser page server
+
+Controller handles decisions model hanldes data view handles presentation
+Decision code goes in cotroller. Action controller
+View action view
+Model  is active record
+Action pack contains action view
+Chapter 2-1
+Terminal and unix setup
+
+Uses terminal
+Updated PATH in bash_profile
+
+
+Chap 2-2
+
+XCODE
+
+
+
+Chap 2 -3
+RUby
+
+Test it I in there
+Ruby-lang.org  install ruby and other gems and update with macports has good guides
+
+
+
+
+Chap 2-4
+Install Ruby gems
+
+Name of package manager application
+Gems are ruby code packaged up using the reuby gems manager
+Rails is itself a gem
+ Test it with gem –v
+
+
+Gem –help or rubygems.org
+
+
+Chap 2 -5 installing rails
+
+Rails is a command line tool
+
+
+2-6
+mysql
+
+go to dev.mysql.com
+get mysql community server
+
+set it up and set password (bonusboy22)
+login as root
+ron$ -u root –p
+
+
+2-7 
+web server
+
+browser talking to web server talking to rails app so it knows what to return
+browser web server rails app
+which server?
+Apache 1 or 2? Most popular
+Comes with mac
+Can install passenger on apache / mod_rails most rails options are using apache2 and passenger
+
+Webrick ships with rails. It is a very simple server with rails. Preinstalled and preconfigured to work with rails. Takes browser request talks to rails and returbns results.
+Prob want to use apache 2 later but for now WEBrick
+
+
+
+2-8 Text editor
+we need something that is a code editor. 
+Must do coloring and suntax highlighting
+In ruby it will know to make class method and variable different colors
+
+Want to be able to navigate the whole project at once
+Prject window or open file tabs
+Needs good search and replace
+Auto pairing. It will open and close parenthesis for example
+Auto indent so you don’t have to hit tab
+Code completion, hit a magic key and it suggests what you want to type
+Must be able to customize color
+
+He recommends textmate. Most popular in rails community
+Can use other editors or IDEs
+
+Going to use textmate.
+
+
+
+
+4-1
+creating a project
+we are going to create a cms
+
+creating a new one
+rails new simple_cms -d mysql
+
+
+
+4-2
+Accessing a project
+
+Launch webrick
+Had an error
+Go to folder for new prject
+Rails s
+In browser go to localhost:3000
+Has links to help and about
+This index is in public index.htl
+If you close the server your page wont show on the local host
+
+
+Git info go37go
+Email ronpatiro@gmail
+
+
+
+4-3
+generating a controller and a view
+right now not dealing with data. Just browser controller view
+
+rails generate to see a list
+generate controller
+generate it and name it
+
+
+
+6-2
+creating a database
+
+recommends not to use rails command line toold for making database. He likes to go into mysql to create a new one in swl
+SHOW DATABASES;
+CREATE DATABASE
+
+Etc
+
+Log into mysql mysql –u root –p
+Creating own creates a container. 
+He doesn’t like loggining into mysql from rails as root. He wants you to go to the mysql itself
+
+Grant all priveleges on db to 
+
+
+6-3
+configuring the database
+
+
+open sonfig databases.yml
+it is  away to structure a simple textfile
+attribute: value
+
+reails environments or modes. Prob want differnet databases 
+* development
+* production
+* test environment
+
+each one should have their own db
+
+update databse yml to reflect the login info for the new db user for the prjects. Starting with development
+
+now test in command lin rake space db: dump
+
+
+
+4-4
+file structure
+
+get to know the framework
+app is the most important folder. Contains core of app code. Most time is in the app folder
+
+you can see the MVC arch in that folder
+
+mailer sis not in apps
+helpers give some help
+want to make sure we get right code in each folder and stick w mvc arch
+
+config
+file for application config
+db config
+ininialzer launches things whern it starts
+locales does internationalization
+routes decides how diff urls route through the app
+config.ru configs rack based servers
+d folder is for database. You can put migration code in there’
+doc is for docuemantation. Ike to do lists and other things about the project
+
+3 ways to get external code in app, 3rd party
+* rubygems
+* put in lib folder
+* vendor foler – plugins
+
+log folder puts logs about what is happening in the app. 
+Errors or general info 
+Rakefile is used by rails
+Redme is for you to fill out and describe your cms
+Scripts is where rails scripts will be stored
+Test is for testing and putting test code. This is more advanced, but we can write code to test our other code
+Temp is werhe we can put temp files to create and delete
+Public folder is a place for all the files and assets that do not need to be process by the application framework. This stiuff can go write to the browser and the public can see these files. You have to assume the public can see this stuiff so be careful. App code is locked away from public. Html fo in there favicon robots.tx, css js images, etc
+Putting htings in public makes it faster cus it doesn’t have to go through the framework
+
+
+
+4-6
+how server requests are handled
+
+view is usually a html page when sent to web server
+
+public directory dtands between web server and the rails framework. Must be carful not to interfere.
+
+Talking about how the public file is getting in the way
+
+
+
+
+
+
+4-7 
+routes
+how rail s parses requests into controllers and actions. This is abig topic. Stick to three
+* simple routes
+* default routes
+* root route
+* 
+
+when you generate something it puts it in the routes
+
+cong routes.rb is where our routes are.
+Get “demo/index” was added to routes. If you generate something it will add it to the routes file.
+
+Get “demo/index” is simple route
+Shortcut for
+Match “demo/index”, :to => “demo#index”
+Match exact string  “demo/index” to demo (controller) # index (is the action)
+
+We could make something more fexible. A default route
+Separate the :controller/:action/:id   each one is separated by the slash
+So a request like,  GET /students/edit/52 
+Must be mapped to students controller and edits action
+So we put match ‘:controller(/:action(/:id(.:format)))’  we will assume the format is html. Can be others
+Always make the default route the lowest priority on routes.rb
+
+When working with routes file. Stop the sevrer and restart it.
+
+Root route  
+Root :to => “demo#index”
+
+
+5-1 
+controllers views and dynamic action
+Rendering templates
+Routes determin which controller and action get usesd. At that point the controller decides how to control.
+It is common for controller actions to use more than one if or statements
+
+Biggest choise a controller makes is which view to show
+
+Demo_controller.rb has a default line in it to say what to do. Open default
+
+So instead of defining action sin the controller file you can stat template render(:template => ‘demo/hello’)
+Now in rails we can remove template.  And just have render(‘hello’) as long as it is in the same directory
+
+Full path starting at views folder
+
+Recap of syntax on shoosing on what to render
+Deault. Will pick the template that mathvs the action name. no typing and no code to break. Accept defauls 
+You can put templare => in there but not necessary
+dont use action
+render (‘hello’) template
+
+
+
+5-2 rendering actions
+
+controllers can render a view or redirect an action
+wil either render a view or redirect an action elsewhere
+example
+webpage is requested. Controller sees if logged in. if no logged in we can render a log in page, but insead we want to send them to a diff section of code. 
+
+A redirect is part of http. It will return a status code. 302 found location found and redirect them to this…  this will make the browsers redirect a different page. This is different because it is a new request from the browser. Net effect is we are looping to a different place in the controller. 
+
+Writing the redirect
+redirect_to(:action => 'other_hello')
+
+redirect will send a new url on the top. Render will keep the url the same
+
+
+
+
+5-3
+view templates
+
+you can use rails routing to pick a bunch of static pages but not excitein
+what we want is to embed ruby code into templates so we can have dynamic content
+we user erb  embedded ruby
+
+hellol.html.erb
+template name : hello
+process with ERb
+output format: html
+
+<% ruby code %>  this executes ruby code
+
+
+<%= ruby code %> this executes and outputs the ruby code
+
+adding this to a page
+<% target = "world"%>  this defines the target
+
+<%= "Hello #{target}"%>  this places where the target is
+
+you cannot use “puts “ and “gets” in rails
+
+
+5-4 instance variables
+
+they give templaes accesto data pulled together by controller
+controller has a function to control things. It make sdecisions on how the function will work and decides how to gather the data and then calls the view template. All the view needs to do is decide how to present the data
+
+controller is like the roadie and the view is the guitar player
+
+
+there are regular variable and instance variabels
+
+instance have @ infront
+instanc eis part of object oriented programming
+this variable applies inside this instance of an object
+
+in this case the controller is object. It is a regular ruby class and creates an instance of the calss and there can be instance variable in that class
+
+we set the instance variable in the controller. When we go to render a template rails looks at the instance variables and gathers them and makes them available to the template about to be rendered. We transfer info from controller to view exclusively through instance variables.
+
+Controller and view have cozy relationship. Both part of action pack. You cannot go from view back to controller. Controller ust lead and have it first
+
+<% @array.each do |n| %>
+  <%= n %><br />
+creates a vertical list of numbers
+
+5-5 links
+
+so far we have mapped out brower request. Web server looks in public directory, then passes request off to the routes, routes picks a controller and an action, controller gathers everything it needs, then renders the correct view, the view pulls in any instance vaariables we program it to display, ssends it back to web server and on to the browser.
+
+Last thing missing is links. 
+
+Remember
+Html links look like   <a href= “/demo/index” >index page </a>
+We could use thi sin our tempaltes, buyt uncommon. We have a better way to put this inour templates.
+<%= link_to(text, target) %>
+for target we can just put dir “/demo/index “
+other option is to pass in a ruby hash which defines the controller before hash and action after hash. If we are using the same controller we can leave it out. 
+
+<%= link_to("my first link",{:action =>'index'})%>
+
+looks to routes file to define where index is
+
+
+<%= link_to('go back to hello page', {:action => 'hello'})%>
+
+
+
+
+
+
+
+5-6 URL parameters
+
+adding url parameters in the url string
+how to add paramters and how controller can access those parameters
+
+we add the parameters as key value pairs to our hash
+
+{ :controller => ‘demo’, :action => ‘hello’, :id => 1, :page => 3, :name => ‘kevin’ }
+
+so when reils generates the link. Have I been given a controoler? If no I will default to current, same with action. The remaining ones get turned into parameters. The one exception is id, it has a special value because it is used so much. It gets a special privilege. It has its own place in the default route strutture :controller/:action/:id 
+when rails rights the route, it will put it on the left site of the a href it converts it so the id is on the left side of the question mark.  All other things oare on the right of the questions
+
+rails has  aspecial method to call on parmaeters
+params
+contains all get and post
+can access controller sand actions in params
+params is a method it will return a hash with a different access it exists for this purpose. It lets us specify the key in the hash we want with a sumbol or  astring
+haswithindifferentaccess
+
+wypically want to read the url parmaeters in the controller.
+
+
+When we have integers and strings. A parameter is always a string. If you want to make a parameter a interger you can you to i
+
+
+
+6-1 introducing databases
+model is set up to control db or something
+
+don’t need to know all the sql but bu ti helps
+
+terms
+database is a set of tables
+in rails 1 application is 1 database
+example might me simple_cms_development
+all lowercase and underscores
+this is where we grant access permissions
+
+a table is  a set of columns and rows
+1 model = 1 table in rails
+each model and table represent a single concept a noun .  a what. users, subjects, pages
+this is where relationships occure. 
+
+Columns
+Set of data of a single type
+A single attribute of our model is equal to a columns
+
+Column types a re stings and intergers
+
+Each row is one object or instance
+“kevin”
+
+field is a intersection of a column and row
+it is a single value. Field I used interchangeable with column
+
+
+
+foreign key
+table columns whos values reference rows in a another databse
+example pages.subject_id
+singular foregn table name + “_id”
+
+with two tables you take the table name an dput underscore and the key you want to pull in
+
+
+index is  a data structure on a table that helps you speed p the look up speed.
+
+Schema is the structural definiation that makes up the database tables columns indexes and database
+
+
+
+6-4 rake
+rake is a simple ruby helper program it is a builder program. It is similar to make in unix ruby of make = rake
+
+rake db:schema:dump
+
+in root of app there is a rakek file. With simple ruby code
+
+
+6-5 migration
+it is a set of instruction lets us migrate the changes that should take place
+instructions for moving up to a new state can move down by dropping a table
+can move up by adding columsn
+
+why use a migration
+keeps schema with the application code
+description of db must be stored with application
+
+migrations will store all the steps. You can move to a new environment and execute, you can also share the changes with other devs
+this helps with versioning. You can migrate a db to a previous state. Lets us write ruby code instead of sql
+
+has access to rails application code
+
+
+6-6 generating a migration
+
+they liv ein db folder
+
+different types of columns types
+binary float
+Boolean integer date string
+Datetime text decimal time
+
+Table columns options
+:limit => size
+:default => true
+:null => true/false
+:precision => number
+:scale => number
+
+
+
+in createusers
+created and updated at are often used in rails. T.timestamps has replaced both. This wil be on almost every table
+create_table will create the id for you on everytable if we don’t specifiy anything
+
+
+
+
+
+
+6-7 running the migration
+
+done from command line with rake
+go to root of project rake db:migrate
+we can add RAILS_ENV another location
+
+GOT STUCK – I ws missing and end
+
+
+6-8 migration methods
+
+remove column
+add_column(table, column, type, options)
+remove
+rename  new_name
+change
+
+index migration
+add_index( table, column, options)
+
+index migration method options
+:unique => true/false
+
+
+sql migration
+execute(any SQL string”)
+
+
+
+
+6-8 troubleshooting migrations
+
+can go in and drop a table to get a fresh start
+better way is to go into the migrate files and see what the last lines that have been executed are and comment them out. Then go to version 0 and then restart. Yo uhave to get to an absolute state up or down and then go. 
+
+Keep migrations small and concise so it is easier to troubleshoot. 
+
+Make sure all your migrations are working in dev env before moving to production dev
+
+
+
+6-9 migrations for simple cms
+
+subject contains pages and pages contain sections 
+page needs a subject id
+and section needs a page id
+each fiels will be ab integer
+
+1. generate the models. Subject page section
+2. write migrations. Subject name string, position, integer, visible Boolean
+pages, name sting, permalink syring, position integer, visisble Boolean
+sections, name string, positioninteger, visible Boolean, content_type strin, content
+add foreign keys
+add indexes
+
+there should b 3 index  and none on subject table
+
+run migrations
+go up then go down and then move between different folerds
+
+
+
+6-10 migration exercise solution
+
+things we need to do:
+generate models
+subject, page, section
+rails generate model CamelCaseModelName
+type rails generate model to get a help page
+
+
+
+write migrations
+subjects
+pages
+sections
+context
+add foregn keys
+add indexes
+
+run migrations
+up 
+down
+all different versions
+
+
+createsubjects
+create table
+name is s astring
+integer is position
+Boolean is visible or not. Giv eit  adefault value. Use default => false
+Timestamp
+
+Down is drop table
+
+
+Create pages
+Put foreign key at the top it is an integer it is the subject id
+Name is string
+Permalink is a strin
+Position is a integer
+
+Add indexes on your foreign keys
+We are using subject id and permalink as foreign keys
+Forerin keys are also in an different end
+Index help to find a page easily
+
+
+
+Create sections
+Rereferences page
+
+Name string
+
+
+
+
+Notes on my attempt
+No clue on the keys and foregn keys. Foregn keys define the relation between pages and subjects pages and sections
+Add indexes . should add three
+
+Option for the :default does not get singe quptes. Comma after the name
+
+
+Pages has the foreign key of subject_id. It goes on the top and it is an integer
+This makes sense because the page is going to pull in a subject from the list
+The indexes wen on the pages model
+Add indec pages subject id
+Add indes pages permalink  this goes “table” “columns”
+Always add an index on your foregn keys
+Add another index on the permalink because it is used to find a page. 
+
+
+Create sections
+
+
+
+7-1
+understanding active record and active relations
+
+active record is a commly used design pattern or relationa databses
+ActiveRecord is a the rails implementation of the active record pattern
+Lets us retrieve and manipulate data as objects, not just static rows
+It makes our objects intelligent
+* they understand the structure of the database and know how ti interact with it
+* they inderscontain data but also can creat read and update and elete rows
+* they can be manipulated and saved back to the db
+examples
+* create an active record object
+* retrieve an active record object, update values, and save
+* deleate an active record object
+* 
+
+active record example
+
+user = User.new
+user.first_name = “Kevin”
+user.save   this is an SQL INSERT
+
+user.last_name = “skoglund”
+user.save   this is an SQL UPDATE
+
+user.delete  this is an SQL DELETE
+
+
+Active Realtion
+New and added to rals 3 ARel
+Object oriented inter[pretation of relational algebra
+It simplifies the generation of coplex database queries
+* small quesries
+* compelx hoinds and agggregations
+* handles the timing
+used heavily by active record, it is the underpinning of active record. This lives behind the scenes
+
+users = User.where(:first_name => “Kevin”)
+users = users.order(“last+name ADC”).limit(5)
+users = users.include(:articles_authored)
+
+
+
+7-2 generating a model
+
+looking at models not just migration
+rails generate model SingularName  -< meaning NOT PLURAL
+
+Creates file in db/migrate
+* creates filename create_subjects.rb
+* class name is CreateSubjects
+* Class inherits from ActiveRecord::Migration
+* Puts method calls of create_table :subjects and drop_table :subjects
+
+Creates file in app/models
+* create subject.rb  SINGULAR
+* class name is Subject
+* Class inherits from ActiveRecord::Base
+
+File names, class, names, and table names matter!
+
+Rails generate is giving you shortcut to creating files and applying rails conventions
+
+
+
+Class name needs to match file name
+You can change it by set_table_name
+But instesd aw ewill use rails conventions
+
+
+
+7-3
+Working in rails console
+
+Can use it in command line
+Irb
+
+1 +1 
+
+
+can open rais console
+rails c
+or rails console
+
+you can use it to create objects and pop ulate it and it populates it to the database. Lets us not need to go into the db. And also not to create a web page to enter data
+
+
+
+
+7-4
+creating new records
+
+new / save
+* instantiae a ruby object
+* set values
+* save
+create
+* does all three on one step
+the subject is an onbject we are working with but is not assigned to db yet. If id is nil we know it is not in db yet
+
+
+
+I tried the subject new and it didn’t put everything in so I did it one at a tie
+subject = Subject.new(:name => "First Subject", :position => 1, :visible => true)
+
+>> subject = Subject.new
+=> #<Subject id: nil, name: nil, position: nil, visible: false, created_at: nil, updated_at: nil>
+>> subject.name = "Second Subject"
+=> "Second Subject"
+>> subject.position = "2"
+=> "2"
+>> subject.visible = "true"
+=> "true"
+>> subject.save
+   (0.2ms)  BEGIN
+  SQL (0.7ms)  INSERT INTO `subjects` (`created_at`, `name`, `position`, `updated_at`, `visible`) VALUES ('2012-06-06 15:52:02', 'Second Subject', 2, '2012-06-06 15:52:02', 1)
+   (50.8ms)  COMMIT
+=> true
+>> subject.new_record?
+=> false
+>>
+
+
+
+
+
+
+Subject.create  this is supposed to add it all and save it
+trying subject = Subject.create(:name => “Second Subject”, :position => 2)
+
+test if it has an ID then it is committed
+
+
+
+
+
+
+
+
+
+7-5
+using console to update records
+
+save
+* find record
+* saet values
+* save
+
+update_attributes
+* find record
+* set values save
+* and save
+
+
+
+
+>> subject = Subject.find(1)
+  Subject Load (0.6ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`id` = 1 LIMIT 1
+=> #<Subject id: 1, name: "First Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:40:12">
+>> subject.name
+=> "First Subject"
+>> subject.name = "Initial SUbject"
+=> "Initial SUbject"
+>> subject.name = "Initial Subject"
+=> "Initial Subject"
+>> subject.name
+=> "Initial Subject"
+>> subject.save
+   (0.1ms)  BEGIN
+   (0.9ms)  UPDATE `subjects` SET `updated_at` = '2012-06-06 15:56:30', `name` = 'Initial Subject' WHERE `subjects`.`id` = 1
+   (51.6ms)  COMMIT
+=> true
+>> subject
+=> #<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">
+>> 
+
+
+
+
+
+
+
+Update attributes
+
+I couldn’t get it to work for all them at one time
+
+>> subject.name
+NameError: undefined local variable or method `subject' for main:Object
+	from (irb):2
+>> subject = Subject.find(2)
+  Subject Load (0.6ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`id` = 2 LIMIT 1
+=> #<Subject id: 2, name: "Second Subject", position: 2, visible: true, created_at: "2012-06-06 15:52:02", updated_at: "2012-06-06 15:52:02">
+>> subject.name
+=> "Second Subject"
+>> subject.name = "Revised Subject"
+=> "Revised Subject"
+>> subject.visible = "true"
+=> "true"
+>> subject.save
+   (0.2ms)  BEGIN
+   (0.5ms)  UPDATE `subjects` SET `updated_at` = '2012-06-06 16:15:57', `name` = 'Revised Subject' WHERE `subjects`.`id` = 2
+   (308.2ms)  COMMIT
+=> true
+>> subject.new_record?
+=> false
+>>
+
+
+
+
+7-6 Deleting records
+
+
+creating the subject
+
+>> subject = Subject.new
+=> #<Subject id: nil, name: nil, position: nil, visible: false, created_at: nil, updated_at: nil>
+>> subject.name = "Bad Subject"
+=> "Bad Subject"
+>> subject.save
+   (0.3ms)  BEGIN
+
+
+  SQL (0.5ms)  INSERT INTO `subjects` (`created_at`, `name`, `position`, `updated_at`, `visible`) VALUES ('2012-06-06 16:20:04', 'Bad Subject', NULL, '2012-06-06 16:20:04', 0)
+   (3.0ms)  COMMIT
+=> true
+
+
+To delete a object:  find it with destroy. You can use delete but it bypasses things we need to know about first.
+
+
+>> subject.name
+=> "Bad Subject"
+>> subject.frozen
+NoMethodError: undefined method `frozen' for #<Subject:0x10bdcbb10>
+	from /Library/Ruby/Gems/1.8/gems/activemodel-3.2.5/lib/active_model/attribute_methods.rb:407:in `method_missing'
+	from /Library/Ruby/Gems/1.8/gems/activerecord-3.2.5/lib/active_record/attribute_methods.rb:149:in `method_missing'
+	from (irb):15
+>> subject.frozen?
+=> true
+
+
+
+
+
+
+7-8  Finding Records
+
+
+lots to explore here.you will be finding records much more often than createing and deleting
+
+ways:
+primary key finder
+* Subject.find(2)
+
+Use this is if we are confident something will be there
+
+
+Dynamic finders:
+Subject.find_by_id(2), Subject.find_by_name(“First Subject”)
+Retrurns an objectr or nil. This may go away he says. This is more error tolerant
+We will switch between them depending on what we want 
+
+Find all method
+Subject.all
+Returns an array of objects. Not a single object
+
+First/last methods
+Subject.first, Subject.last
+Returns an object or nil
+
+
+
+
+Creating a new subject and finding it
+
+
+
+
+7-8 Working with Querries
+
+Querry methods: conditions
+Wht conditions data needs to meet before it gets returbed
+All subject with x y and z true
+
+
+New active relation querry method
+Where(conditions)
+Subject.where(:visible => true)
+
+This will return an AR object which will be chained
+
+Only makes db clal when necessary
+
+
+Conditions expression types
+String:
+“name = ‘First Subject’ AND visible = true”
+Flexible Raw SQL
+Use this carefully beware of SQL injection
+This is  a way we can get hacked.  SQL injection attack. Only use it if you have total control over what values go in.  Don’t let a value provided by user to go in. Prevent it by escaping user string. 
+
+We pass in an array.
+
+Array
+[“name = ? AND visible = true”, “First Subject”]
+
+flexible and escaped sql
+safe from sql injection
+anything we want to escape we use ? as plaveholder
+
+
+type three  Hash
+{:name => “First Subject”, :visible => true}
+simple escaped sql
+safe from sql injection
+only supports equalit, range, and subset checking, no LIKE, less than/greater than
+
+can only use simple commands
+
+
+standard is to use hash in most cases. If you need more then use array. Very few occasion when string is needed
+
+
+>> subject = Subject.find(3)
+  Subject Load (0.5ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`id` = 3 LIMIT 1
+ActiveRecord::RecordNotFound: Couldn't find Subject with id=3
+	from /Library/Ruby/Gems/1.8/gems/activerecord-3.2.5/lib/active_record/relation/finder_methods.rb:339:in `find_one'
+	from /Library/Ruby/Gems/1.8/gems/activerecord-3.2.5/lib/active_record/relation/finder_methods.rb:310:in `find_with_ids'
+	from /Library/Ruby/Gems/1.8/gems/activerecord-3.2.5/lib/active_record/relation/finder_methods.rb:107:in `find'
+	from /Library/Ruby/Gems/1.8/gems/activerecord-3.2.5/lib/active_record/querying.rb:5:in `__send__'
+	from /Library/Ruby/Gems/1.8/gems/activerecord-3.2.5/lib/active_record/querying.rb:5:in `find'
+	from (irb):23
+>> subject = Subject.find_by_id(3)
+  Subject Load (0.4ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`id` = 3 LIMIT 1
+=> nil
+>> subject = Subject.find_by_name("Initial Subject")
+  Subject Load (0.5ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`name` = 'Initial Subject' LIMIT 1
+=> #<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">
+>> subject = Subject.all
+  Subject Load (0.6ms)  SELECT `subjects`.* FROM `subjects` 
+=> [#<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">, #<Subject id: 2, name: "Revised Subject", position: 2, visible: true, created_at: "2012-06-06 15:52:02", updated_at: "2012-06-06 16:15:57">, #<Subject id: 4, name: "Third Subject", position: 3, visible: false, created_at: "2012-06-06 16:31:57", updated_at: "2012-06-06 16:31:57">]
+>> subject = Subject.find_by_id(1)
+  Subject Load (0.5ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`id` = 1 LIMIT 1
+=> #<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">
+>> subjects.each do |subject|
+?>   puts subject.name
+>> end
+NameError: undefined local variable or method `subjects' for main:Object
+	from (irb):28
+>> subject.first
+NoMethodError: undefined method `first' for #<Subject:0x10b7e29b0>
+	from /Library/Ruby/Gems/1.8/gems/activemodel-3.2.5/lib/active_model/attribute_methods.rb:407:in `method_missing'
+	from /Library/Ruby/Gems/1.8/gems/activerecord-3.2.5/lib/active_record/attribute_methods.rb:149:in `method_missing'
+	from (irb):31
+>> Subject.first
+  Subject Load (0.5ms)  SELECT `subjects`.* FROM `subjects` LIMIT 1
+=> #<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">
+>> subjects = Subject.where(:visible => true)
+  Subject Load (0.7ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`visible` = 1
+=> [#<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">, #<Subject id: 2, name: "Revised Subject", position: 2, visible: true, created_at: "2012-06-06 15:52:02", updated_at: "2012-06-06 16:15:57">]
+>> subjects = Subject.where(:visible = "true")
+SyntaxError: compile error
+(irb):34: syntax error, unexpected '=', expecting ')'
+subjects = Subject.where(:visible = "true")
+                                   ^
+(irb):34: syntax error, unexpected ')', expecting $end
+	from (irb):34
+>> subjects = Subject.where("visible = true")
+  Subject Load (0.4ms)  SELECT `subjects`.* FROM `subjects` WHERE (visible = true)
+=> [#<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">, #<Subject id: 2, name: "Revised Subject", position: 2, visible: true, created_at: "2012-06-06 15:52:02", updated_at: "2012-06-06 16:15:57">]
+>> subjects = Subject.where(["visible = ?", true]
+>> subjects = Subject.where(["visible = ?", true])
+>> subjects.class
+>> subjects.to_sql
+>> subjects.all
+
+
+
+
+7-9 Query methods: order, limit, offset
+
+all are part of new active relation query methods
+
+new query syntax:
+Subject.order(“position ASC”).limit(20).offset(40)
+
+Order uses an SQL fragmanet
+
+Format for order:
+Table_name.column_name ASC/DESC
+It will default to ASC, but always use it.
+
+Table disambiguation. Make sure SQL knows what we are referring to
+Not necessary with single table.
+If crossing diff relationships it is less clear. You want to include the table name. 
+
+
+Examples
+“subjects.position ASC”
+“Subjects.name DESC”
+“subjects.visible DESC, subjects.name ASC”  
+
+
+
+>> subjects = Subject.where(:visible => true).order("position ASC")
+  Subject Load (0.6ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`visible` = 1 ORDER BY position ASC
+=> [#<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">, #<Subject id: 2, name: "Revised Subject", position: 2, visible: true, created_at: "2012-06-06 15:52:02", updated_at: "2012-06-06 16:15:57">]
+>> subjects = Subject.where(:visible => true).order("position DESC")
+  Subject Load (0.6ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`visible` = 1 ORDER BY position DESC
+=> [#<Subject id: 2, name: "Revised Subject", position: 2, visible: true, created_at: "2012-06-06 15:52:02", updated_at: "2012-06-06 16:15:57">, #<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">]
+>> subjects = Subject.where(:visible => true).order("position DESC").limit(1)
+  Subject Load (0.6ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`visible` = 1 ORDER BY position DESC LIMIT 1
+=> [#<Subject id: 2, name: "Revised Subject", position: 2, visible: true, created_at: "2012-06-06 15:52:02", updated_at: "2012-06-06 16:15:57">]
+>> subjects = Subject.where(:visible => true).order("position DESC").limit(1).offset(1)
+  Subject Load (0.5ms)  SELECT `subjects`.* FROM `subjects` WHERE `subjects`.`visible` = 1 ORDER BY position DESC LIMIT 1 OFFSET 1
+=> [#<Subject id: 1, name: "Initial Subject", position: 1, visible: true, created_at: "2012-06-06 15:40:12", updated_at: "2012-06-06 15:56:30">]
+>> 
+
+
+
+table disambiguation adds  subjects to position in order
+>> subjects = Subject.where(:visible => true).order("subjects.position ASC")
+
+
+
+
+
+
+
+
+7-10 
+Named Scopes
+
+We may not need it but he thinks they are cool
+
+Lets you take the quesries you run, save them and name them. We can call them like active relation q methods and have us return results.  If we use it a lot we name it and put it in the model. It can be simple or complex.
+
+It can accept parameters. If we want to find something with an ID of X
+
+Thi is called “scope”
+
+Add it to the model file
+scope :visible, where(:visible => true)
+
+visible is the name
+
+go to command line and run it
+subjects = Subject.visible
+
+daisychain another 
+subjects = Subject.visible.limit(1)
+
+
+
+
+
+
+
+8-1 relationship types
+
+we want to define relationships between models
+
+3 relationship db types
+* one-to-one
+* one-to-many
+* many-to-many
+
+
+each classroom gets 1 teacher. Students move throu the classes for diff cources
+
+1-1 is relationship with techer to classroom.  The classroom is the parent and the teacher is the child. The foregn key goes on the teachers table. So when we want to know what classroom the teacher belongs to we can look at teachers foreign key to find out where it goes.
+
+The one that owns the relationship gives the foreign key. Teacher belongs to classroom. A classroom has 1 teacher
+
+
+One to many relationship	
+Teacher teaches several courses. Lets say 4 a day. So each course belongs to a teacher. The foreign key goes on the courses table.
+Courses belongs to a teacher. A teacher has many courses
+
+Many – many
+Courses to students. 
+We need to know which students are win which courses
+
+We create a joined table. It is two foreign keys. Courses and students. If you want to find which courses Michal takes go to joined table and pull all courses Michael is in.
+A course has many students and belongs to many students
+
+
+8-2 on-to-one associations
+when to use
+two uses. Unique items that a person or thing can only have one of.
+Id card is unique and one student can only have one of them
+
+Sometimes used to break up a table. Customer Ha_one :billing_address
+
+Sometime syou want to break this off and put it in a separate table. It can help db performance. If something has a lot of columsn and it is used rarely, put it in its own one-to-one there are not many times to use it.
+
+
+Testing it out. Subject-page
+Subject has_one :page
+Page belongs_to :to
+
+Whenever you see “belongs_to” there is a foreign key.
+You always want to define both sides of the relationship.
+
+Put relatioships in model .rb fils. Put the relationship on the top of the file.
+
+We have subject.page now because we defined a 1-1 relationsip
+
+I had to add  attr_accessible :name, :position, :visible, :permalink, :title, :body to each model to do the mass assign
+attr_accessible :name, :position, :visible, :permalink, :title, :body
+then I put this in rails c
+first_page = Page.new(:name => "First page", :permalink => "first", :position => 1)
+we can dd things to 
+
+
+
+
+
+
+
+
+
+
+
